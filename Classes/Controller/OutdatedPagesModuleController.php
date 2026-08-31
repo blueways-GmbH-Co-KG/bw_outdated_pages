@@ -68,6 +68,7 @@ class OutdatedPagesModuleController extends ActionController
             return;
         }
 
+        // @phpstan-ignore-next-line
         $templatePaths = $this->view->getRenderingContext()->getTemplatePaths();
 
         foreach ([

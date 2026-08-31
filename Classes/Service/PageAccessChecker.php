@@ -55,8 +55,9 @@ class PageAccessChecker
     }
 
     /**
-     * @param array<int, array{uid: int}> $entries
-     * @return array<int, array{uid: int}>
+     * @template T of array{uid: int}
+     * @param array<int, T> $entries
+     * @return array<int, T>
      */
     public function filterAccessible(array $entries): array
     {
