@@ -223,7 +223,7 @@ class OutdatedPagesTask extends AbstractTask
         }
 
         $toAddresses = array_map(
-            static fn (string $email): Address => new Address($email),
+            static fn(string $email): Address => new Address($email),
             $recipients
         );
         $mail->to(...$toAddresses);

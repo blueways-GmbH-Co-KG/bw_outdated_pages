@@ -29,7 +29,7 @@ return [
         'extensionName' => 'BwOutdatedPages',
         'controllerActions' => [
             OutdatedPagesModuleController::class => [
-                'main'
+                'main',
             ],
         ],
     ],

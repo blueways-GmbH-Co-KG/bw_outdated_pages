@@ -93,7 +93,7 @@ class OutdatedPagesFinder
             ?? ['id' => self::DEFAULT_LANGUAGE_ID, 'code' => '', 'label' => ''];
         $translationLanguages = array_values(array_filter(
             $languages,
-            static fn (array $language): bool => $language['id'] !== self::DEFAULT_LANGUAGE_ID
+            static fn(array $language): bool => $language['id'] !== self::DEFAULT_LANGUAGE_ID
         ));
 
         $excludedDoktypes = $settings['excludedDoktypes'] ?? self::DEFAULT_EXCLUDED_DOKTYPES;
@@ -192,7 +192,7 @@ class OutdatedPagesFinder
             }
         }
 
-        usort($outdatedPages, static fn (array $a, array $b): int => $a['tstamp'] <=> $b['tstamp']);
+        usort($outdatedPages, static fn(array $a, array $b): int => $a['tstamp'] <=> $b['tstamp']);
 
         return $outdatedPages;
     }

@@ -70,7 +70,7 @@ class OutdatedPagesCollector
         }
 
         $entries = array_values($entries);
-        usort($entries, static fn (array $a, array $b): int => $a['tstamp'] <=> $b['tstamp']);
+        usort($entries, static fn(array $a, array $b): int => $a['tstamp'] <=> $b['tstamp']);
 
         return $entries;
     }
@@ -94,7 +94,7 @@ class OutdatedPagesCollector
             return $this->getAllSiteRootPageUids();
         }
 
-        return array_values(array_filter($mounts, static fn (int $uid): bool => $uid > 0));
+        return array_values(array_filter($mounts, static fn(int $uid): bool => $uid > 0));
     }
 
     /**

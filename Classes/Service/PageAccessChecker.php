@@ -63,7 +63,7 @@ class PageAccessChecker
     {
         return array_values(array_filter(
             $entries,
-            fn (array $entry): bool => $this->isAccessible($entry['uid'])
+            fn(array $entry): bool => $this->isAccessible($entry['uid'])
         ));
     }
 }
