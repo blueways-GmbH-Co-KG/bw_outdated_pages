@@ -10,4 +10,4 @@ $config->addRules([
     'header_comment' => false,
 ]);
 
-return $config
+return $config;
