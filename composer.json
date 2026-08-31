@@ -1,0 +1,55 @@
+{
+    "name": "blueways/bw-outdated-pages",
+    "type": "typo3-cms-extension",
+    "description": "Scheduler task, backend module and dashboard widget notifying about outdated pages in a configurable branch of the page tree.",
+    "license": "GPL-2.0-or-later",
+    "keywords": [
+        "typo3",
+        "typo3-cms-extension",
+        "outdated",
+        "pages",
+        "scheduler",
+        "dashboard",
+        "backend"
+    ],
+    "authors": [
+        {
+            "name": "Evelin Bornstein",
+            "email": "info@blueways.de",
+            "homepage": "https://www.blueways.de/",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://www.blueways.de",
+    "support": {
+        "email": "info@blueways.de",
+        "issues": "https://github.com/blueways-GmbH-Co-KG/bw_outdated_pages/issues",
+        "source": "https://github.com/blueways-GmbH-Co-KG/bw_outdated_pages"
+    },
+    "require": {
+        "typo3/cms-core": "^13.4",
+        "typo3/cms-scheduler": "^13.4",
+        "typo3/cms-dashboard": "^13.4"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.12",
+        "saschaegerer/phpstan-typo3": "^1.10",
+        "friendsofphp/php-cs-fixer": "^3.64",
+        "typo3/coding-standards": "^0.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Blueways\\BwOutdatedPages\\": "Classes/"
+        }
+    },
+    "scripts": {
+        "ci:php:stan": "phpstan analyse",
+        "ci:php:cs": "php-cs-fixer fix --dry-run --diff",
+        "fix:php:cs": "php-cs-fixer fix"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "bw_outdated_pages"
+        }
+    }
+}

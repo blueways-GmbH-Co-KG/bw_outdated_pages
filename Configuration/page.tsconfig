@@ -1,0 +1,57 @@
+module.tx_bw_outdated_pages {
+    # Template path overrides for the backend module (Backend/Index.html).
+    # Paths with higher numeric keys take precedence (tried first).
+    view {
+        templateRootPaths {
+            10 = EXT:bw_outdated_pages/Resources/Private/Templates/
+        }
+        partialRootPaths {
+            10 = EXT:bw_outdated_pages/Resources/Private/Partials/
+        }
+        layoutRootPaths {
+            10 = EXT:bw_outdated_pages/Resources/Private/Layouts/
+        }
+    }
+
+    # Email settings for the scheduler task.
+    email {
+        # Default subject used when the task's own subject field is left empty.
+        # {count} is replaced with the number of outdated pages found.
+        defaultSubject = [TYPO3] {count} veraltete Seitenversion(en) gefunden
+
+        # Path to the Fluid plain-text template used for the notification email.
+        # Available variables: {pages} (array with uid, title, languageTag, date),
+        # {daysThreshold}, {count}.
+        templatePath = EXT:bw_outdated_pages/Resources/Private/Templates/Email/OutdatedPages.txt
+    }
+
+    settings {
+        # Comma-separated list of page doktypes to exclude from the outdated-pages check.
+        # Default: External URL (3), Shortcut (4), BE user section (6), Mount point (7),
+        #          Spacer (199), Sysfolder (254), Recycler (255)
+        excludedDoktypes = 3,4,6,7,199,254,255
+
+        # Whether to exclude pages whose direct parent is a Sysfolder (doktype 254).
+        # Set to 0 to also check pages organised inside Sysfolders.
+        excludePagesUnderSysfolders = 1
+
+        # Default number of days without a change before a page is considered outdated.
+        # Editors can still override this interactively inside the backend module.
+        defaultDaysThreshold = 180
+
+        # Whether to include the tstamp of content elements when determining if a page
+        # is outdated. Set to 0 to only check the page record itself.
+        checkContentElements = 1
+
+        # Maximum depth of the page tree to traverse (0 = unlimited).
+        maxDepth = 0
+
+        # Comma-separated list of page UIDs to always exclude from the check,
+        # regardless of their doktype or position in the tree.
+        excludePageUids =
+
+        # Whether to also check hidden (disabled) pages. Set to 1 to include
+        # hidden pages and their content elements in the outdated-pages report.
+        checkHiddenPages = 0
+    }
+}

@@ -1,0 +1,113 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+        xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+
+<f:layout name="Module"/>
+
+<f:section name="Content">
+    <div class="bw-outdated-pages-module">
+        <f:if condition="{noPageSelected}">
+            <f:then>
+                <p>
+                    <f:translate key="LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:module.selectPage" />
+                </p>
+            </f:then>
+            <f:else>
+                <p class="text-body-secondary">
+                    <f:translate key="LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:module.currentPage" />:
+                    <strong>
+                        <f:if condition="{currentPageTitle}">
+                            <f:then>{currentPageTitle} (ID {currentPageUid})</f:then>
+                            <f:else>ID {currentPageUid}</f:else>
+                        </f:if>
+                    </strong>
+                </p>
+
+                <f:form class="row g-2 align-items-end mb-4" action="main" controller="OutdatedPagesModule" method="post">
+                    <input type="hidden" name="id" value="{currentPageUid}" />
+                    <div class="col-auto">
+                        <label for="bw-filter-days">
+                            <f:translate key="LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:field.daysThreshold" />
+                        </label>
+                        <input type="number" min="1" name="days" id="bw-filter-days" class="form-control" value="{currentDays}" />
+                    </div>
+                    <div class="col-auto">
+                        <label for="bw-filter-language">
+                            <f:translate key="LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:module.filter.language" />
+                        </label>
+                        <select name="language" id="bw-filter-language" class="form-select">
+                            <option value=""></option>
+                            <f:for each="{languageOptions}" as="option">
+                                <f:if condition="{option.selected}">
+                                    <f:then>
+                                        <option value="{option.value}" selected="selected">{option.value}</option>
+                                    </f:then>
+                                    <f:else>
+                                        <option value="{option.value}">{option.value}</option>
+                                    </f:else>
+                                </f:if>
+                            </f:for>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <label for="bw-filter-search">
+                            <f:translate key="LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:module.filter.search" />
+                        </label>
+                        <input type="text" name="search" id="bw-filter-search" class="form-control" value="{currentSearch}" />
+                    </div>
+                    <div class="col-auto">
+                        <f:form.submit value="<f:translate key=\"LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:module.filter.apply\" />" class="btn btn-primary" />
+                    </div>
+                </f:form>
+
+                <f:if condition="{rows}">
+                    <f:then>
+                        <p class="text-body-secondary">
+                            {filteredCount} / {totalCount}
+                            <f:translate key="LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:module.resultCount" />
+                        </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th><f:translate key="LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:module.column.language" /></th>
+                                    <th><f:translate key="LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:module.column.title" /></th>
+                                    <th><f:translate key="LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:module.column.pageUid" /></th>
+                                    <th><f:translate key="LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:module.column.lastChanged" /></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <f:for each="{rows}" as="row">
+                                    <tr class="bw-outdated-row">
+                                        <td><span class="badge badge-secondary">{row.languageTag}</span></td>
+                                        <td>
+                                            <f:if condition="{row.editUrl}">
+                                                <f:then><a href="{row.editUrl}" target="_top">{row.title}</a></f:then>
+                                                <f:else>{row.title}</f:else>
+                                            </f:if>
+                                        </td>
+                                        <td>{row.uid}</td>
+                                        <td>{row.date}</td>
+                                        <td>
+                                            <f:if condition="{row.reviewUrl}">
+                                                <button type="button" class="btn btn-default btn-sm bw-mark-reviewed" data-url="{row.reviewUrl}">
+                                                    <f:translate key="LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:module.markReviewed" />
+                                                </button>
+                                            </f:if>
+                                        </td>
+                                    </tr>
+                                </f:for>
+                            </tbody>
+                        </table>
+                    </f:then>
+                    <f:else>
+                        <p><f:translate key="LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:widget.noResults" /></p>
+                    </f:else>
+                </f:if>
+            </f:else>
+        </f:if>
+    </div>
+</f:section>
+</html>

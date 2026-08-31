@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2026-08-25T00:00:00Z" product-name="bw_outdated_pages">
+        <header/>
+        <body>
+            <trans-unit id="task.title" resname="task.title">
+                <source>Outdated pages</source>
+            </trans-unit>
+            <trans-unit id="task.description" resname="task.description">
+                <source>Sends an email listing pages within a configurable branch of the page tree that have not been edited for a defined number of days.</source>
+            </trans-unit>
+            <trans-unit id="field.entryPageUid" resname="field.entryPageUid">
+                <source>Starting page (page UID)</source>
+            </trans-unit>
+            <trans-unit id="field.daysThreshold" resname="field.daysThreshold">
+                <source>Considered outdated after (days)</source>
+            </trans-unit>
+            <trans-unit id="field.recipientEmails" resname="field.recipientEmails">
+                <source>Recipient email address(es), comma-separated</source>
+            </trans-unit>
+            <trans-unit id="field.senderEmail" resname="field.senderEmail">
+                <source>Sender email address (optional, falls back to system default)</source>
+            </trans-unit>
+            <trans-unit id="field.senderName" resname="field.senderName">
+                <source>Sender name (optional)</source>
+            </trans-unit>
+            <trans-unit id="field.emailSubject" resname="field.emailSubject">
+                <source>Email subject (optional, {count} is replaced with the number of outdated pages)</source>
+            </trans-unit>
+            <trans-unit id="widget.title" resname="widget.title">
+                <source>Outdated pages</source>
+            </trans-unit>
+            <trans-unit id="widget.description" resname="widget.description">
+                <source>Live summary of outdated pages across all configured Outdated Pages tasks.</source>
+            </trans-unit>
+            <trans-unit id="widget.noResults" resname="widget.noResults">
+                <source>No outdated pages found.</source>
+            </trans-unit>
+            <trans-unit id="widget.untitled" resname="widget.untitled">
+                <source>(untitled)</source>
+            </trans-unit>
+            <trans-unit id="widget.itemMeta" resname="widget.itemMeta">
+                <source>Page ID %1$d - last changed on %2$s</source>
+            </trans-unit>
+            <trans-unit id="widget.moreResults" resname="widget.moreResults">
+                <source>...and %d more. See the notification emails for the full list.</source>
+            </trans-unit>
+            <trans-unit id="widget.markReviewed" resname="widget.markReviewed">
+                <source>Mark as reviewed</source>
+            </trans-unit>
+<trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
+                <source>Outdated pages</source>
+            </trans-unit>
+            <trans-unit id="mlang_labels_tabdescr" resname="mlang_labels_tabdescr">
+                <source>Filterable overview of outdated pages across all configured tasks, with quick review.</source>
+            </trans-unit>
+            <trans-unit id="module.filter.language" resname="module.filter.language">
+                <source>Language</source>
+            </trans-unit>
+            <trans-unit id="module.filter.section" resname="module.filter.section">
+                <source>Section</source>
+            </trans-unit>
+            <trans-unit id="module.filter.search" resname="module.filter.search">
+                <source>Search title</source>
+            </trans-unit>
+            <trans-unit id="module.filter.apply" resname="module.filter.apply">
+                <source>Apply filters</source>
+            </trans-unit>
+            <trans-unit id="module.resultCount" resname="module.resultCount">
+                <source>outdated page versions shown</source>
+            </trans-unit>
+            <trans-unit id="module.column.language" resname="module.column.language">
+                <source>Language</source>
+            </trans-unit>
+            <trans-unit id="module.column.title" resname="module.column.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="module.column.pageUid" resname="module.column.pageUid">
+                <source>Page ID</source>
+            </trans-unit>
+            <trans-unit id="module.column.lastChanged" resname="module.column.lastChanged">
+                <source>Last changed</source>
+            </trans-unit>
+            <trans-unit id="module.column.section" resname="module.column.section">
+                <source>Section</source>
+            </trans-unit>
+            <trans-unit id="module.markReviewed" resname="module.markReviewed">
+                <source>Mark as reviewed</source>
+            </trans-unit>
+            <trans-unit id="module.sectionFallback" resname="module.sectionFallback">
+                <source>Page %d</source>
+            </trans-unit>
+            <trans-unit id="module.selectPage" resname="module.selectPage">
+                <source>Select a page in the page tree to check it (and its subpages) for outdated content.</source>
+            </trans-unit>
+            <trans-unit id="module.currentPage" resname="module.currentPage">
+                <source>Showing results for</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

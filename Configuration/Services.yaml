@@ -1,0 +1,44 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  # Scheduler tasks are (de)serialized directly by TYPO3 Scheduler, and
+  # the widget class is instantiated explicitly below (with its own
+  # $options) - both are excluded from the wildcard autoconfiguration so
+  # there's no conflicting duplicate registration.
+  Blueways\BwOutdatedPages\:
+    resource: '../Classes/*'
+    exclude:
+      - '../Classes/Task/*'
+      - '../Classes/Dashboard/Widgets/*'
+
+  Blueways\BwOutdatedPages\Service\OutdatedPagesFinder:
+    public: true
+
+  Blueways\BwOutdatedPages\Dashboard\OutdatedPagesListDataProvider:
+    public: true
+
+  Blueways\BwOutdatedPages\Controller\OutdatedPagesModuleController:
+    public: true
+
+  Blueways\BwOutdatedPages\Controller\MarkReviewedAjaxController:
+    public: true
+
+  dashboard.widget.blueways.bw_outdated_pages.outdatedPagesList:
+    class: 'Blueways\BwOutdatedPages\Dashboard\Widgets\OutdatedPagesWidget'
+    autowire: true
+    arguments:
+      $dataProvider: '@Blueways\BwOutdatedPages\Dashboard\OutdatedPagesListDataProvider'
+      $options:
+        refreshAvailable: true
+    tags:
+      - name: dashboard.widget
+        identifier: 'bwOutdatedPagesList'
+        groupNames: 'general'
+        title: 'LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:widget.title'
+        description: 'LLL:EXT:bw_outdated_pages/Resources/Private/Language/locallang.xlf:widget.description'
+        iconIdentifier: 'content-widget-list'
+        height: 'large'
+        width: 'medium'

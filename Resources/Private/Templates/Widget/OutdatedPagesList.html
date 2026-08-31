@@ -1,0 +1,17 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Widget/Widget" />
+<f:section name="main">
+
+    <f:if condition="{items}">
+        <ul style="list-style: none; padding: 0; margin: 0;">
+            <f:for each="{items}" as="item">
+                <li style="border-top: 1px solid var(--bs-border-color); padding: 6px 0;"><f:format.raw>{item}</f:format.raw></li>
+            </f:for>
+        </ul>
+    </f:if>
+
+</f:section>
+<f:section name="footer">
+    <f:render partial="Widget/Button" arguments="{button: button}"/>
+</f:section>
+</html>

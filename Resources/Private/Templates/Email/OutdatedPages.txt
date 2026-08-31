@@ -1,0 +1,5 @@
+Folgende Seitenversionen wurden seit mehr als {daysThreshold} Tagen nicht mehr geändert (weder die Seite selbst noch eines ihrer Inhaltselemente):
+
+<f:for each="{pages}" as="page">- [{page.languageTag}] {page.title} (Seiten-ID: {page.uid}) - zuletzt geändert am {page.date}
+</f:for>
+Diese Benachrichtigung wurde automatisch vom TYPO3-Scheduler-Task "Outdated Pages" erzeugt.
