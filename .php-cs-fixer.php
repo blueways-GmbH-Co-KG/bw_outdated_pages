@@ -6,8 +6,8 @@ $config->getFinder()
     ->in(__DIR__ . '/Configuration')
     ->append([__DIR__ . '/ext_localconf.php']);
 
-$rules = $config->getRules();
-unset($rules['header_comment']);
-$config->setRules($rules);
+$config->addRules([
+    'header_comment' => false,
+]);
 
-return $config;
+return $config
