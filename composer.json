@@ -57,5 +57,6 @@
         "typo3/cms": {
             "extension-key": "bw_outdated_pages"
         }
-    }
+    },
+    "php": "^8.2"
 }
