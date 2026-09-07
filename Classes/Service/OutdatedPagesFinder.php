@@ -134,7 +134,7 @@ class OutdatedPagesFinder
         $defaultUids = array_keys($defaultPages);
 
         $allLanguageIds = array_merge(
-            [self::DEFAULT_LANGUAGE_ID],
+            [-1, self::DEFAULT_LANGUAGE_ID],
             array_column($translationLanguages, 'id')
         );
         $contentTstampsByPageAndLanguage = $checkContentElements
@@ -154,8 +154,10 @@ class OutdatedPagesFinder
         $outdatedPages = [];
 
         foreach ($defaultPages as $uid => $page) {
+            $allLangContentTstamp = $contentTstampsByPageAndLanguage[$uid][-1] ?? 0;
+
             $defaultLanguageTag = $this->buildLanguageTag($defaultLanguage);
-            $defaultContentTstamp = $contentTstampsByPageAndLanguage[$uid][self::DEFAULT_LANGUAGE_ID] ?? 0;
+            $defaultContentTstamp = max($contentTstampsByPageAndLanguage[$uid][self::DEFAULT_LANGUAGE_ID] ?? 0, $allLangContentTstamp);
             $defaultReviewedAt = $reviewsByPageAndLanguage[$uid][$defaultLanguageTag] ?? 0;
             $defaultLastChanged = max($page['tstamp'], $defaultContentTstamp, $defaultReviewedAt);
 
@@ -177,7 +179,7 @@ class OutdatedPagesFinder
                 }
 
                 $languageTag = $this->buildLanguageTag($language);
-                $contentTstamp = $contentTstampsByPageAndLanguage[$uid][$language['id']] ?? 0;
+                $contentTstamp = max($contentTstampsByPageAndLanguage[$uid][$language['id']] ?? 0, $allLangContentTstamp);
                 $reviewedAt = $reviewsByPageAndLanguage[$uid][$languageTag] ?? 0;
                 $lastChanged = max($translatedPage['tstamp'], $contentTstamp, $reviewedAt);
 
